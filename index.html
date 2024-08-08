@@ -1,9 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mumi</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: fill;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello World</h1>
+    <img id="daily-image" src="" alt="Daily Image">
+    <script>
+        function getCurrentWeekday() {
+            const today = new Date();
+            const day = today.getDay();
+            return day;
+        }
+
+        function setDailyImage() {
+            const day = getCurrentWeekday();
+            const imageElement = document.getElementById('daily-image');
+            imageElement.src = `assets/${day}.png`;
+            imageElement.alt = `Image for Day ${day}`;
+        }
+
+        window.onload = setDailyImage;
+    </script>
 </body>
+
 </html>
